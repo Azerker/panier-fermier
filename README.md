@@ -7,6 +7,7 @@ erDiagram
         int id PK
         string nom
         string email
+        string telephone "Nouveau champ"
         string ville
         string date_inscription
     }
@@ -18,12 +19,18 @@ erDiagram
         string specialite
     }
 
+    Categorie {
+        int id PK
+        string nom_categorie
+    }
+
     Produit {
         int id PK
         string nom
         float prix_unitaire
         int stock
         int producteur_id FK
+        int categorie_id FK
     }
 
     Commande {
@@ -43,4 +50,5 @@ erDiagram
     Producteur ||--o{ Produit : "fournit"
     Commande ||--|{ Ligne_commande : "contient"
     Produit ||--o{ Ligne_commande : "figure_dans"
+    Categorie ||--o{ Produit : "classifie"
 ```
